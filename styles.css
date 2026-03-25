@@ -1,0 +1,377 @@
+:root {
+    --bg-color: #0d1117;
+    --panel-color: #161b22;
+    --border-color: #30363d;
+    --accent-blue: #58a6ff;
+    --accent-yellow: #d29922;
+    --accent-red: #f85149;
+    --text-primary: #f0f6fc;
+    --text-secondary: #c9d1d9;
+    --text-muted: #8b949e;
+    --success: #238636;
+    --warning: #d29922;
+    --error: #da3633;
+    --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.login-container {
+    background: var(--panel-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-blue);
+}
+
+.login-container p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#login-form input {
+    padding: 0.75rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--accent-yellow);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+#login-form button {
+    padding: 0.75rem;
+    background: var(--accent-blue);
+    color: var(--text-primary);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.import-btn {
+    margin-top: 1rem;
+    background: var(--bg-color);
+    border: 1px dashed var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--panel-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-info {
+    flex: 1;
+}
+
+#user-box {
+    background: rgba(255, 198, 0, 0.1);
+    border-left: 4px solid var(--accent-yellow);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--accent-yellow);
+}
+
+.time-zones {
+    display: flex;
+    gap: 1rem;
+}
+
+.tz {
+    text-align: center;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    min-width: 80px;
+}
+
+.tz-name {
+    font-size: 0.75rem;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.tz-time {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-yellow);
+}
+
+.tz-date {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--panel-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.quad-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.quad-btn {
+    padding: 0.5rem 1rem;
+    background: var(--panel-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.quad-btn.active {
+    background: var(--bg-color);
+    color: var(--text-primary);
+    border-color: var(--accent-blue);
+}
+
+.controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.controls button {
+    padding: 0.5rem 1rem;
+    background: var(--panel-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.875rem;
+    border-radius: 4px;
+}
+
+.controls button.active {
+    color: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+}
+
+main {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.quad-container {
+    display: none;
+}
+
+.quad-container.visible {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background: var(--bg-color);
+    color: var(--accent-blue);
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.timer-cell {
+    text-align: center;
+}
+
+.timer-display {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.late {
+    color: var(--error);
+}
+
+.btn-done {
+    padding: 0.25rem 0.5rem;
+    background: var(--bg-color);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.btn-done.active {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.btn-reset {
+    padding: 0.25rem 0.5rem;
+    background: var(--error);
+    color: var(--text-primary);
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+footer {
+    padding: 1rem;
+    background: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+footer button {
+    padding: 0.5rem 1rem;
+    background: var(--panel-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+#logout-btn {
+    background: var(--error);
+    color: var(--text-primary);
+    border: none;
+}
+
+.modal-content {
+    background: var(--panel-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    max-width: 500px;
+    width: 100%;
+}
+
+.modal-content h2 {
+    color: var(--accent-yellow);
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.modal-content button {
+    margin-right: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent-blue);
+    color: var(--text-primary);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.modal-content button:last-child {
+    background: var(--border-color);
+}
+
+.deco-line {
+    height: 4px;
+    width: 80%;
+    margin: 4px auto 0;
+    display: none;
+}
+
+.caution {
+    display: block;
+    background: var(--warning);
+    animation: blink 2s infinite;
+}
+
+.warning {
+    display: block;
+    background: var(--warning);
+    animation: blink 1s infinite;
+}
+
+.critical {
+    display: block;
+    background: var(--error);
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.3; }
+}
